@@ -113,9 +113,9 @@ Under Identity > Compartments, note your compartment OCID; we will need this OCI
 
 ### Update OCI Configuration file
 
-Update DEFAULT values as per your OCI parameters :
+Update DEFAULT values as per your OCI parameters:
 
-    vi ~/.oci/config
+    $ vi ~/.oci/config
 
 The parameters will look something like this:
 
@@ -129,20 +129,20 @@ The parameters will look something like this:
 See if we can list all buckets in a compartment to check if all configurations are correct. Provide your compartment ocid where the OCI buckets have been created 
 
 ```console
--- set chmod on .pem file  --
-chmod 600 /your-folder/your-oci-key.pem
+# set chmod on .pem file
+$ chmod 600 /your-folder/your-oci-key.pem
 
--- get tenancy namespace --
-oci os ns get
+# get tenancy namespace
+$ oci os ns get
 
 {
   "data": "yournamespace"
 }
 
--- run oci cli to list buckets in a OCI Object storage 
-oci os bucket list --compartment-id ocid1.compartment.oc1..aXXXn4hgg
+# run oci cli to list buckets in a OCI Object storage 
+$ oci os bucket list --compartment-id ocid1.compartment.oc1..aXXXn4hgg
 
--- expect a similar JSON output without errors --
+# expect a similar JSON output without errors
 
   {
       "compartment-id": "ocid1.compartment.oc1..aXXX32q", 
@@ -162,10 +162,10 @@ If this lists objects in an OCI bucket or the name of your tenancy namespace, we
 Please add any additional libraries as required to run the Python code. 
 
 ```console
-python3 --version
+$ python3 --version
 Python 3.10.4
 
-pip install -U langchain oci
+$ pip install -U langchain oci
 langchain-core
 langchain-cli
 langchain_cohere 
@@ -221,7 +221,7 @@ Download [Basic.py][21] run the Python code, and view output
 [21]: http://Basic.py
 
 ```console
-python3 basic.py
+$ python3 basic.py
 
 The Egyptians built the pyramids. The Egyptian pyramids are ancient pyramid-shaped masonry structures located in Egypt.
 ```
@@ -393,11 +393,17 @@ To achieve this, the government intends to adopt economic policies that facilita
 
 Change the prompt and re-run the same code 
 
-    -- update the code --
-    print(chain.invoke("What is India's fiscal deficit"))
+- Update the code
     
-    -- run the code --
+    ```python
+    print(chain.invoke("What is India's fiscal deficit"))
+    ```
+
+- Run the code
+
+    ```console
     $ python3 searchpdf.py
+    ```
 
 AI Output after searching through the Budget PDF is. 
 
