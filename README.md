@@ -48,8 +48,8 @@ This is a 3-step process.
 
 
 [9]: https://docs.oracle.com/en-us/iaas/Content/generative-ai/iam-policies.htm
-[10]: https://github.com/langchain-oci-genai/tree/main/assets/GenAI
-[11]: https://github.com/langchain-oci-genai/tree/main/assets/budget_speech.pdf
+[10]: https://github.com/oracle-devrel/langchain-oci-genai/tree/main/assets/GenAI
+[11]: https://github.com/oracle-devrel/langchain-oci-genai/tree/main/assets/budget_speech.pdf
 
 ### Step 1: Installing OCI CLI and Configuring
 
@@ -238,7 +238,7 @@ In this simple Generative AI Application, we will just take input prompt and dis
 Download [quickstart.py][23] and run the code.
 
 
-[23]: https://github.com/langchain-oci-genai/tree/main/assets/GenAI
+[23]: https://github.com/oracle-devrel/langchain-oci-genai/tree/main/assets/GenAI
 
 Run the code from your laptop or desktop command prompt 
 
@@ -290,7 +290,7 @@ Set SequentialChain and Print output on the browser
 
 Download [symptoms.py][30] and run the code. 
 
-[30]: https://github.com/langchain-oci-genai/tree/main/assets/GenAI
+[30]: https://github.com/oracle-devrel/langchain-oci-genai/tree/main/assets/GenAI
 
 Run the Application:
 
@@ -318,7 +318,7 @@ Network URL: http://192.168.X.Y:8501
 A smart application that can read and search PDFs and provide AI output for a given prompt. Download and put the [Budget PDF][33] in the same directory as the Python code. 
     
     
-[33]: https://github.com/langchain-oci-genai/tree/main/assets/budget_speech.pdf
+[33]: https://github.com/oracle-devrel/langchain-oci-genai/tree/main/assets/budget_speech.pdf
 
 Prompt: What is Amrit Kaal?  lets check in the PDF document
 
@@ -469,8 +469,8 @@ generate_response(text)
 [Download Python Code][37] and [Budget PDF][38] used 
 
 
-[37]: https://github.com/langchain-oci-genai/tree/main/assets/GenAI
-[38]: https://github.com/langchain-oci-genai/tree/main/assets/budget_speech.pdf
+[37]: https://github.com/oracle-devrel/langchain-oci-genai/tree/main/assets/GenAI
+[38]: https://github.com/oracle-devrel/langchain-oci-genai/tree/main/assets/budget_speech.pdf
 
 ### Troubleshooting:
 
