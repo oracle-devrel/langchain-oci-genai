@@ -50,7 +50,7 @@ This is a 3-step process.
 [10]: https://github.com/oracle-devrel/langchain-oci-genai/tree/main/assets/GenAI
 [11]: https://github.com/oracle-devrel/langchain-oci-genai/tree/main/assets/budget_speech.pdf
 
-### Step 1: Installing OCI CLI and Configuring
+## Step 1: Installing OCI CLI and Configuring
 
 ### Get User's OCID
 
@@ -155,7 +155,7 @@ $ oci os bucket list --compartment-id ocid1.compartment.oc1..aXXXn4hgg
 
 If this lists objects in an OCI bucket or the name of your tenancy namespace, we are good to move forward; you can create a bucket in OCI Object storage and test it. If there are issues, check the troubleshooting section in this article. 
 
-### Step 2: Install the required Python libraries
+## Step 2: Install the required Python libraries
 
 Add any additional libraries as required to run the Python code: 
 
@@ -173,7 +173,7 @@ langsmith
 streamlit 
 ```
 
-### Step 3: Write and Run the Python code.
+## Step 3: Write and Run the Python code.
 
 The basic command to get the Oracle LLM handle is shown below:
 
@@ -204,6 +204,8 @@ embeddings = OCIGenAIEmbeddings(
     compartment_id="<Your-Compartment-Id>",
 )
 ```
+
+## Examples
 
 ### Example 1: Simple Generative AI Console App
 
@@ -470,7 +472,7 @@ generate_response(text)
 [37]: https://github.com/oracle-devrel/langchain-oci-genai/tree/main/assets/GenAI
 [38]: https://github.com/oracle-devrel/langchain-oci-genai/tree/main/assets/budget_speech.pdf
 
-### Troubleshooting:
+## Troubleshooting:
 
 Error Message:
 
@@ -500,16 +502,13 @@ region=us-phoenix-1
 key_file=/Users/somefolder/oci_api_key_xxx.pem
 ```
 
-References: 
+## References
 
-[Oracle Cloud Infrastructure Generative AI][39]
+- [Oracle Cloud Infrastructure Generative AI][39]
+- [OCI CLI reference][40]
 
 
 [39]: https://python.langchain.com/docs/integrations/llms/oci_generative_ai/
-
-[OCI CLI reference][40]
-
-
 [40]: https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.39.0/oci_cli_docs/cmdref/os/bucket/list.html
 
 ## Contributing
