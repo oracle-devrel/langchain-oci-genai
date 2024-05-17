@@ -54,12 +54,11 @@ This is a 3-step process.
 
 ### Get User's OCID
 
-1. After logging into the cloud console, click on User Settings under the top right navigation; this will take you to **the User Details** page. Copy the OCID into a text file. We will need this later..
+1. After logging into the cloud console, click on User Settings under the top right navigation; this will take you to **the User Details** page. Copy the OCID into a text file. We will need this later:
 
     ![][12]
 
-
-2. Under the same page click on **Add API Key** button 
+2. On the same page click on **Add API Key** button:
 
     ![][13]
 
@@ -68,17 +67,17 @@ This is a 3-step process.
 
 ### Generate and Download RSA Key Pair
 
-1. Choose an Option to Generate a new key pair; if you already have keys generated, you can upload them here, The most important is when you generate the key pair, download both of them, Click **the Add** button
+1. Choose the option to Generate a new key pair; if you already have keys generated, you can upload them here. The most important thing is to download both of them when you create a new key pair. Click **the Add** button:
 
     ![][14]
 
-    You should now be able to see the Configuration file. Copy and paste this into a file we will need later. 
+    You should now be able to see the Configuration file. Copy and paste this into a file we will need later:
 
     ![][15]
 
-    Click on **Close** button 
+    Click on the **Close** button.
 
-2. We can now see our newly created fingerprint 
+2. We can now see our newly created fingerprint:
 
     ![][16]
 
@@ -89,7 +88,7 @@ This is a 3-step process.
 
 ### Get Compartment OCID
 
-Under Identity > Compartments, note your compartment OCID; we will need this OCID later. 
+Under Identity > Compartments, note your compartment OCID; we will need this OCID later:
 
 ![][17]
 
@@ -125,7 +124,7 @@ The parameters will look something like this:
     region=us-phoenix-1 #(replace-with-your-oci-region)
     key_file=/your-folder/your-oci-key.pem
 
-See if we can list all buckets in a compartment to check if all configurations are correct. Provide your compartment ocid where the OCI buckets have been created 
+See if we can list all buckets in a compartment to check if all configurations are correct. Provide your compartment ocid where the OCI buckets have been created:
 
 ```console
 # set chmod on .pem file
@@ -158,7 +157,7 @@ If this lists objects in an OCI bucket or the name of your tenancy namespace, we
 
 ### Step 2: Install the required Python libraries
 
-Please add any additional libraries as required to run the Python code. 
+Add any additional libraries as required to run the Python code: 
 
 ```console
 $ python3 --version
@@ -191,7 +190,7 @@ llm = OCIGenAI(
 )
 ```
 
-To get OCI Generative AI Embeddings 
+To get OCI Generative AI Embeddings:
 
 ```python
 from langchain_community.llms import OCIGenAI 
@@ -208,14 +207,14 @@ embeddings = OCIGenAIEmbeddings(
 
 ### Example 1: Simple Generative AI Console App
 
-Let's start with a basic Python code in the console to check the connectivity, authentication and AI response. 
+Let's start with a basic Python code in the console to check the connectivity, authentication and AI response:
 
 ![][20]
 
 
 [20]: images/1712895679841.jpg
 
-Download [Basic.py][21] run the Python code, and view output 
+Download [Basic.py][21] run the Python code, and view output:
 
 [21]: http://Basic.py
 
@@ -227,19 +226,19 @@ The Egyptians built the pyramids. The Egyptian pyramids are ancient pyramid-shap
 
 ### Example 2: Simple Generative AI Web Application with Input
 
-In this simple Generative AI Application, we will just take input prompt and display AI result. 
+In this simple Generative AI Application, we will just take input prompt and display AI result:
 
 ![][22]
 
 
 [22]: images/1712895931279.jpg
 
-Download [quickstart.py][23] and run the code.
+Download [quickstart.py][23] and run the code:
 
 
 [23]: https://github.com/oracle-devrel/langchain-oci-genai/tree/main/assets/GenAI
 
-Run the code from your laptop or desktop command prompt 
+Run the code from your laptop or desktop command prompt:
 
 ```console
 $ streamlit run quickstart.py
@@ -263,25 +262,25 @@ Network URL: http://192.168.X.Y:8501
 
 Build your first LangChain and Oracle Generative AI-based Healthcare Application. In this Application, we will take disease as input, and based on this, we will create a LangChain that will list the disease, symptoms and first aid. 
 
-**Code:** Get the required imports and initialise Oracle Generative AI LLM 
+Get the required imports and initialise Oracle Generative AI LLM:
 
 ![][26]
 
 [26]: images/1712896566863.jpg
 
-Build the Streamlit framework and input prompts. 
+Build the Streamlit framework and input prompts:
 
 ![][27]
 
 [27]: images/1712896636612.jpg
 
-Initialise Memory and Chains 
+Initialise Memory and Chains:
 
 ![][28]
 
 [28]: images/1712896739610.jpg
 
-Set SequentialChain and Print output on the browser 
+Set SequentialChain and Print output on the browser:
 
 ![][29]
 
@@ -390,21 +389,21 @@ To achieve this, the government intends to adopt economic policies that facilita
 ....
 ```
 
-Change the prompt and re-run the same code 
+Change the prompt and re-run the same code:
 
-- Update the code
-    
+1. Update the code
+
     ```python
     print(chain.invoke("What is India's fiscal deficit"))
     ```
 
-- Run the code
+2. Run the code:
 
     ```console
     $ python3 searchpdf.py
     ```
 
-AI Output after searching through the Budget PDF is. 
+AI Output after searching through the Budget PDF is: 
 
     India's fiscal deficit for the year 2024-25 is estimated to be 5.1% of GDP, according to a budget speech by the country's Finance Minister Nirmala Sitharaman. This is in line with the government's goal to reduce the fiscal deficit to below 4.5% by 2025-26. 
     
