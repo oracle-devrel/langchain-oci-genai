@@ -128,30 +128,32 @@ The parameters will look something like this:
 
 See if we can list all buckets in a compartment to check if all configurations are correct. Provide your compartment ocid where the OCI buckets have been created 
 
-    -- set chmod on .pem file  --
-    chmod 600 /your-folder/your-oci-key.pem
-    
-    -- get tenancy namespace --
-    oci os ns get
-    
-    {
-      "data": "yournamespace"
+```console
+-- set chmod on .pem file  --
+chmod 600 /your-folder/your-oci-key.pem
+
+-- get tenancy namespace --
+oci os ns get
+
+{
+  "data": "yournamespace"
+}
+
+-- run oci cli to list buckets in a OCI Object storage 
+oci os bucket list --compartment-id ocid1.compartment.oc1..aXXXn4hgg
+
+-- expect a similar JSON output without errors --
+
+  {
+      "compartment-id": "ocid1.compartment.oc1..aXXX32q", 
+      "defined-tags": null,
+      "etag": "25973f28-5125-4eae-a37c-73327f5c2644",
+      "freeform-tags": null,
+      "name": "your-bucket-name",
+      "namespace": "your-tenancy-namespace",
+      "time-created": "2023-03-26T16:18:17.991000+00:00"
     }
-    
-    -- run oci cli to list buckets in a OCI Object storage 
-    oci os bucket list --compartment-id ocid1.compartment.oc1..aXXXn4hgg
-    
-    -- expect a similar JSON output without errors --
-    
-      {
-          "compartment-id": "ocid1.compartment.oc1..aXXX32q", 
-          "defined-tags": null,
-          "etag": "25973f28-5125-4eae-a37c-73327f5c2644",
-          "freeform-tags": null,
-          "name": "your-bucket-name",
-          "namespace": "your-tenancy-namespace",
-          "time-created": "2023-03-26T16:18:17.991000+00:00"
-        }
+```
 
 If this lists objects in an OCI bucket or the name of your tenancy namespace, we are good to move forward; you can create a bucket in OCI Object storage and test it. If there are issues, check the troubleshooting section in this article. 
 
@@ -159,45 +161,51 @@ If this lists objects in an OCI bucket or the name of your tenancy namespace, we
 
 Please add any additional libraries as required to run the Python code. 
 
-    python3 --version
-    Python 3.10.4
-    
-    pip install -U langchain oci
-    langchain-core
-    langchain-cli
-    langchain_cohere 
-    cohere
-    langgraph 
-    langsmith
-    streamlit 
+```console
+python3 --version
+Python 3.10.4
+
+pip install -U langchain oci
+langchain-core
+langchain-cli
+langchain_cohere 
+cohere
+langgraph 
+langsmith
+streamlit 
+```
 
 ### Step 3: Write and Run the Python code.
 
 The basic command to get the Oracle LLM handle is shown below:
 
-    from langchain_community.llms import OCIGenAI 
-    
-    ...
-    
-    llm = OCIGenAI(
-        model_id="cohere.command",
-        service_endpoint="https://inference.generativeai.us-chicago-1.oci.oraclecloud.com",
-        compartment_id="<Your-Compartment-Id>",
-        model_kwargs={"temperature": 0.7, "top_p": 0.75, "max_tokens": 1000}
-    )
+```python
+from langchain_community.llms import OCIGenAI 
+
+...
+
+llm = OCIGenAI(
+    model_id="cohere.command",
+    service_endpoint="https://inference.generativeai.us-chicago-1.oci.oraclecloud.com",
+    compartment_id="<Your-Compartment-Id>",
+    model_kwargs={"temperature": 0.7, "top_p": 0.75, "max_tokens": 1000}
+)
+```
 
 To get OCI Generative AI Embeddings 
 
-    from langchain_community.llms import OCIGenAI 
-    from langchain_community.embeddings import OCIGenAIEmbeddings
-    
-    ...
-    
-    embeddings = OCIGenAIEmbeddings(
-        model_id="cohere.embed-english-light-v3.0",
-        service_endpoint="https://inference.generativeai.us-chicago-1.oci.oraclecloud.com", 
-        compartment_id="<Your-Compartment-Id>",
-    )
+```python
+from langchain_community.llms import OCIGenAI 
+from langchain_community.embeddings import OCIGenAIEmbeddings
+
+...
+
+embeddings = OCIGenAIEmbeddings(
+    model_id="cohere.embed-english-light-v3.0",
+    service_endpoint="https://inference.generativeai.us-chicago-1.oci.oraclecloud.com", 
+    compartment_id="<Your-Compartment-Id>",
+)
+```
 
 ### Example 1: Simple Generative AI Console App
 
@@ -212,9 +220,11 @@ Download [Basic.py][21] run the Python code, and view output
 
 [21]: http://Basic.py
 
-    python3 basic.py
-    
-    The Egyptians built the pyramids. The Egyptian pyramids are ancient pyramid-shaped masonry structures located in Egypt.
+```console
+python3 basic.py
+
+The Egyptians built the pyramids. The Egyptian pyramids are ancient pyramid-shaped masonry structures located in Egypt.
+```
 
 ### Example 2: Simple Generative AI Web Application with Input
 
@@ -232,12 +242,14 @@ Download [quickstart.py][23] and run the code.
 
 Run the code from your laptop or desktop command prompt 
 
-    % streamlit run quickstart.py
-    
-    You can now view your Streamlit app in your browser.
-    
-    Local URL: http://localhost:8501
-    Network URL: http://192.168.X.Y:8501
+```console
+$ streamlit run quickstart.py
+
+You can now view your Streamlit app in your browser.
+
+Local URL: http://localhost:8501
+Network URL: http://192.168.X.Y:8501
+```
 
 ![][24]
 
@@ -282,12 +294,14 @@ Download [symptoms.py][30] and run the code.
 
 Run the Application:
 
-    % streamlit run symptoms.py
-    
-    You can now view your Streamlit app in your browser.
-    
-    Local URL: http://localhost:8501
-    Network URL: http://192.168.X.Y:8501
+```console
+$ streamlit run symptoms.py
+
+You can now view your Streamlit app in your browser.
+
+Local URL: http://localhost:8501
+Network URL: http://192.168.X.Y:8501
+```
 
 ![][31]
 
@@ -306,56 +320,56 @@ A smart application that can read and search PDFs and provide AI output for a gi
     
 [33]: https://github.com/langchain-oci-genai/tree/main/assets/budget_speech.pdf
 
+Prompt: What is Amrit Kaal?  lets check in the PDF document
 
-    Prompt: What is Amrit Kaal?  lets check in the PDF document
-    
-    
-    from langchain_community.document_loaders import PyPDFLoader
-    from langchain_community.llms import OCIGenAI 
-    from langchain_core.prompts import PromptTemplate
-    from langchain.schema.output_parser import StrOutputParser
-    from langchain.schema.runnable import RunnablePassthrough
-    from langchain_community.embeddings import OCIGenAIEmbeddings
-    from langchain_community.vectorstores import Chroma
-      
-    loader = PyPDFLoader("budget_speech.pdf")
-    pages = loader.load_and_split()
-    
-    llm = OCIGenAI(
-        model_id="cohere.command",
-        service_endpoint="https://inference.generativeai.us-chicago-1.oci.oraclecloud.com",
-        compartment_id="<Your-Compartment-Id>",
-        model_kwargs={"temperature": 0.7, "top_p": 0.75, "max_tokens": 1000}
-    )
-    
-    embeddings = OCIGenAIEmbeddings(
-        model_id="cohere.embed-english-light-v3.0",
-        service_endpoint="https://inference.generativeai.us-chicago-1.oci.oraclecloud.com",
-        compartment_id="<Your-Compartment-Id>",
-    )
-    
-    vectorstore = Chroma.from_documents(
-        pages,
-        embedding=embeddings    
-    )
-    retriever = vectorstore.as_retriever()
-    
-    template = """ 
-    {context}
-    Indian Budget Speech : {input} 
-    """
-    prompt = PromptTemplate.from_template(template)
-     
-    
-    chain = (
-        {"context": retriever, 
-         "input": RunnablePassthrough()}
-        | prompt
-        | llm
-        | StrOutputParser()
-    )
-    
-    print(chain.invoke("What is Amrit Kaal"))
+```python
+from langchain_community.document_loaders import PyPDFLoader
+from langchain_community.llms import OCIGenAI 
+from langchain_core.prompts import PromptTemplate
+from langchain.schema.output_parser import StrOutputParser
+from langchain.schema.runnable import RunnablePassthrough
+from langchain_community.embeddings import OCIGenAIEmbeddings
+from langchain_community.vectorstores import Chroma
+  
+loader = PyPDFLoader("budget_speech.pdf")
+pages = loader.load_and_split()
+
+llm = OCIGenAI(
+    model_id="cohere.command",
+    service_endpoint="https://inference.generativeai.us-chicago-1.oci.oraclecloud.com",
+    compartment_id="<Your-Compartment-Id>",
+    model_kwargs={"temperature": 0.7, "top_p": 0.75, "max_tokens": 1000}
+)
+
+embeddings = OCIGenAIEmbeddings(
+    model_id="cohere.embed-english-light-v3.0",
+    service_endpoint="https://inference.generativeai.us-chicago-1.oci.oraclecloud.com",
+    compartment_id="<Your-Compartment-Id>",
+)
+
+vectorstore = Chroma.from_documents(
+    pages,
+    embedding=embeddings    
+)
+retriever = vectorstore.as_retriever()
+
+template = """ 
+{context}
+Indian Budget Speech : {input} 
+"""
+prompt = PromptTemplate.from_template(template)
+ 
+
+chain = (
+    {"context": retriever, 
+     "input": RunnablePassthrough()}
+    | prompt
+    | llm
+    | StrOutputParser()
+)
+
+print(chain.invoke("What is Amrit Kaal"))
+```
 
 Run the code in the terminal:
 
@@ -363,18 +377,19 @@ Run the code in the terminal:
 
 [34]: images/1712837027530.jpg
 
+```console
+$ python3 searchpdf.py
 
-    python3 searchpdf.py
-    
-    -- Output from Generative AI after searching the PDF --
-    
-    The Indian Budget Speech outlines the government's plans and priorities for the fiscal year 2024-25. One of the key focus areas highlighted in the speech is the concept of "Amrit Kaal," which translates to "Era of Immortality" or "Golden Era." 
-    
-    The government aims to foster inclusive and sustainable development to improve productivity, create opportunities for all, and contribute to the generation of resources to power investments and fulfill aspirations. 
-    
-    To achieve this, the government intends to adopt economic policies that facilitate growth and transform the country. This includes ensuring timely and adequate finances, relevant technologies, and appropriate training for Micro, Small and Medium Enterprises (MSME) to compete globally.  
-    
-    ....
+-- Output from Generative AI after searching the PDF --
+
+The Indian Budget Speech outlines the government's plans and priorities for the fiscal year 2024-25. One of the key focus areas highlighted in the speech is the concept of "Amrit Kaal," which translates to "Era of Immortality" or "Golden Era." 
+
+The government aims to foster inclusive and sustainable development to improve productivity, create opportunities for all, and contribute to the generation of resources to power investments and fulfill aspirations. 
+
+To achieve this, the government intends to adopt economic policies that facilitate growth and transform the country. This includes ensuring timely and adequate finances, relevant technologies, and appropriate training for Micro, Small and Medium Enterprises (MSME) to compete globally.  
+
+....
+```
 
 Change the prompt and re-run the same code 
 
@@ -382,7 +397,7 @@ Change the prompt and re-run the same code
     print(chain.invoke("What is India's fiscal deficit"))
     
     -- run the code --
-    python3 searchpdf.py
+    $ python3 searchpdf.py
 
 AI Output after searching through the Budget PDF is. 
 
@@ -401,48 +416,49 @@ AI Output after searching through the Budget PDF is.
 
 [36]: images/1712976912969.jpg
 
+```python
+import streamlit as st
+from langchain_community.llms import OCIGenAI 
+from langchain_community.document_loaders import PyPDFLoader
+from langchain_core.prompts import PromptTemplate
+from langchain_community.embeddings import OCIGenAIEmbeddings
+from langchain_community.vectorstores import Chroma
 
-    import streamlit as st
-    from langchain_community.llms import OCIGenAI 
-    from langchain_community.document_loaders import PyPDFLoader
-    from langchain_core.prompts import PromptTemplate
-    from langchain_community.embeddings import OCIGenAIEmbeddings
-    from langchain_community.vectorstores import Chroma
-    
-    st.title('🦜🔗 PDF AI Search Application')
-     
-    def generate_response(input_text): 
-      loader = PyPDFLoader("budget_speech.pdf")
-      pages = loader.load_and_split()
-      llm = OCIGenAI(
-        model_id="cohere.command",
-        service_endpoint="https://inference.generativeai.us-chicago-1.oci.oraclecloud.com",
-        compartment_id="<Your-Compartment-Id>",
-        model_kwargs={"temperature": 0.7, "top_p": 0.75, "max_tokens": 300}
-      )  
-      embeddings = OCIGenAIEmbeddings(
-        model_id="cohere.embed-english-light-v3.0",
-        service_endpoint="https://inference.generativeai.us-chicago-1.oci.oraclecloud.com",
-        compartment_id="<Your-Compartment-Id>",
-      ) 
-      vectorstore = Chroma.from_documents(
-            pages,
-            embedding=embeddings    
-        )
-      retriever = vectorstore.as_retriever()
-      template = """ 
-      {context}
-      Indian Budget Speech : {input} 
-      """
-      prompt = PromptTemplate.from_template(template) 
-      st.info(llm(input_text))
-    
-    with st.form('my_form'):
-      text = st.text_area('Enter Search:','What is Amrit Kaal?')
-      submitted = st.form_submit_button('Submit') 
-    generate_response(text)
-    
-    #streamlit run pdfsearch.py
+st.title('🦜🔗 PDF AI Search Application')
+ 
+def generate_response(input_text): 
+  loader = PyPDFLoader("budget_speech.pdf")
+  pages = loader.load_and_split()
+  llm = OCIGenAI(
+    model_id="cohere.command",
+    service_endpoint="https://inference.generativeai.us-chicago-1.oci.oraclecloud.com",
+    compartment_id="<Your-Compartment-Id>",
+    model_kwargs={"temperature": 0.7, "top_p": 0.75, "max_tokens": 300}
+  )  
+  embeddings = OCIGenAIEmbeddings(
+    model_id="cohere.embed-english-light-v3.0",
+    service_endpoint="https://inference.generativeai.us-chicago-1.oci.oraclecloud.com",
+    compartment_id="<Your-Compartment-Id>",
+  ) 
+  vectorstore = Chroma.from_documents(
+        pages,
+        embedding=embeddings    
+    )
+  retriever = vectorstore.as_retriever()
+  template = """ 
+  {context}
+  Indian Budget Speech : {input} 
+  """
+  prompt = PromptTemplate.from_template(template) 
+  st.info(llm(input_text))
+
+with st.form('my_form'):
+  text = st.text_area('Enter Search:','What is Amrit Kaal?')
+  submitted = st.form_submit_button('Submit') 
+generate_response(text)
+
+#streamlit run pdfsearch.py
+```
 
 [Download Python Code][37] and [Budget PDF][38] used 
 
@@ -454,27 +470,31 @@ AI Output after searching through the Budget PDF is.
 
 Error Message:
 
-    Traceback (most recent call last):
-      File "/some-folder/basic.py", line 3, in <module>
-        llm = OCIGenAI(
-      File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/langchain_core/load/serializable.py", line 120, in __init__
-        super().__init__(**kwargs)
-      File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/pydantic/v1/main.py", line 341, in __init__
-        raise validation_error
-    pydantic.v1.error_wrappers.ValidationError: 1 validation error for OCIGenAI
-    __root__
-      Could not authenticate with OCI client. Please check if ~/.oci/config exists. If INSTANCE_PRINCIPLE or RESOURCE_PRINCIPLE is used, Please check the specified auth_profile and auth_type are valid. (type=value_error)
+```console
+Traceback (most recent call last):
+  File "/some-folder/basic.py", line 3, in <module>
+    llm = OCIGenAI(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/langchain_core/load/serializable.py", line 120, in __init__
+    super().__init__(**kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/pydantic/v1/main.py", line 341, in __init__
+    raise validation_error
+pydantic.v1.error_wrappers.ValidationError: 1 validation error for OCIGenAI
+__root__
+  Could not authenticate with OCI client. Please check if ~/.oci/config exists. If INSTANCE_PRINCIPLE or RESOURCE_PRINCIPLE is used, Please check the specified auth_profile and auth_type are valid. (type=value_error)
+```
 
-Solution: This is an Authentication issue, Verify the config file settings:
+**Solution**: This is an Authentication issue, Verify the config file settings:
 
-     vi ~/.oci/config
-    
-    [DEFAULT]
-    user=ocid1.user.oc1..aaaaaaaaompuufgfXXXXndy5q
-    fingerprint=d5:84:a7:0e:bf:43:XXXXX:11:1a:50
-    tenancy=ocid1.tenancy.oc1..aaaaaaaaXXXXXgfa
-    region=us-phoenix-1
-    key_file=/Users/somefolder/oci_api_key_xxx.pem
+```console
+$ vi ~/.oci/config
+
+[DEFAULT]
+user=ocid1.user.oc1..aaaaaaaaompuufgfXXXXndy5q
+fingerprint=d5:84:a7:0e:bf:43:XXXXX:11:1a:50
+tenancy=ocid1.tenancy.oc1..aaaaaaaaXXXXXgfa
+region=us-phoenix-1
+key_file=/Users/somefolder/oci_api_key_xxx.pem
+```
 
 References: 
 
