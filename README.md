@@ -1,8 +1,7 @@
-# langchain-oci-genai
+# How to work with LangChain and Oracle Generative AI
 
 [![License: UPL](https://img.shields.io/badge/license-UPL-green)](https://img.shields.io/badge/license-UPL-green)<!--[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=oracle-devrel_langchain-oci-genai)](https://sonarcloud.io/dashboard?id=oracle-devrel_langchain-oci-genai)-->
 
-# How to work with LangChain and Oracle Generative AI
 
 In this demo, we will learn how to work with **#LangChain**'s open-source building blocks, components & **#LLMs **integrations, **#Streamlit**, an open-source **#Python** framework for **#DataScientists** and AI/ML engineers and **#OracleGenerativeAI** to build the next generation of Intelligent Applications. 
 
